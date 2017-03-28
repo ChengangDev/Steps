@@ -30,4 +30,5 @@ public class DbMap {
         public static final String COL_DUETIME = "due_time";
         public static final String COL_STATUS = "status";
     }
+
 }

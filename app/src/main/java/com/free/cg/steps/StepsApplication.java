@@ -10,14 +10,14 @@ import java.io.File;
  * Created by Administrator on 2017/3/2.
  */
 
-public class StepApplication extends Application {
+public class StepsApplication extends Application {
     public static final String TAG = "StepAppliction";
 
-    private static StepApplication singleApp;
+    private static StepsApplication singleApp;
 
     private String mHomePath;
 
-    public static StepApplication getStepAppliction(){
+    public static StepsApplication getStepAppliction(){
         return singleApp;
     }
 
@@ -26,7 +26,7 @@ public class StepApplication extends Application {
         super.onCreate();
         singleApp = this;
         mHomePath = Environment.getExternalStorageDirectory()
-                .getAbsolutePath() + "/ListenCourse";
+                .getAbsolutePath() + "/FreeSteps";
 
         Log.d(TAG, String.format("HomePath: %s", mHomePath));
     }

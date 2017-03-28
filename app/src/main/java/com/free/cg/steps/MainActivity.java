@@ -50,4 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void UpdateStepsListView(){
+        DbHelper dbHelper = new DbHelper(this, StepsApplication.getStepAppliction().getDbPath());
+
+    }
 }

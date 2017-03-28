@@ -29,9 +29,6 @@ public class DbHelper extends SQLiteOpenHelper {
                     Plans.COL_CREATETIME + DATE_TYPE +
                     ")";
 
-    private static final String SQL_DELETE_PLANS =
-            "DROP TABLE IF EXISTS" + Plans.TABLE_NAME;
-
     private static final String SQL_CREATE_STEPS =
             "CREATE TABLE " + Steps.TABLE_NAME + " (" +
                     Steps._ID + " INTEGER PRIMARY KEY," +
@@ -40,9 +37,6 @@ public class DbHelper extends SQLiteOpenHelper {
                     Steps.COL_STARTTIME + DATE_TYPE + COMMA_SEP +
                     Steps.COL_DUETIME + DATE_TYPE +
                     ")";
-
-    private static final String SQL_DELETE_STEPS =
-            "DROP TABLE IF EXISTS" + Steps.TABLE_NAME;
 
     public DbHelper(Context context, String strDbPath){
         super(context, strDbPath, null, DB_VERSION);
@@ -56,8 +50,19 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_PLANS);
-        db.execSQL(SQL_DELETE_STEPS);
+
+        final String strTempTbl = "tempUpdTbl101";
+        DropTable(db, strTempTbl);
+
         onCreate(db);
+    }
+
+    private void DropTable(SQLiteDatabase db, String strTbl){
+        String strSql = String.format("DROP TABLE IF EXISTS %s", strTbl);
+        db.execSQL(strSql);
+    }
+
+    private void CopyCreateTable(SQLiteDatabase db, String strFrom, String strTo){
+        String strSql;
     }
 }
