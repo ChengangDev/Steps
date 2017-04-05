@@ -62,7 +62,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(strSql);
     }
 
-    private void CopyCreateTable(SQLiteDatabase db, String strFrom, String strTo){
+    private void copyCreateTable(SQLiteDatabase db, String strFrom, String strTo){
         String strSql;
     }
 }

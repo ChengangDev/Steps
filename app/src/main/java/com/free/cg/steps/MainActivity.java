@@ -8,6 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
@@ -51,8 +56,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void UpdateStepsListView(){
-        DbHelper dbHelper = new DbHelper(this, StepsApplication.getStepAppliction().getDbPath());
+    private void updateStepsListView(){
+        ListView lv = (ListView)findViewById(R.id.listview_steps);
+        DbOperator dbOp = new DbOperator(this);
+        List<Map<String,String>> oStepsList = dbOp.getStepsList(dbOp.getCurDateStr());
+
+        SimpleAdapter adpt = new SimpleAdapter(this, oStepsList, R.layout.item_of_steps_list,
+                new String[]{}, new int[]{});
 
     }
 }
