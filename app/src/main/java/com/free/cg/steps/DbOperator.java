@@ -42,22 +42,53 @@ public class DbOperator {
                 DbMap.Steps.COL_STARTTIME, strDate);
         SQLiteDatabase oDb = mDbHelper.getReadableDatabase();
         Cursor c = oDb.rawQuery(strSql, null);
-        if(c.getCount()==0)
-            return oList;
+        if(c.getCount()>0) {
+            do {
+                Map<String, String> m = new HashMap<String, String>();
+                m.put(Steps.COL_STATUS,
+                        c.getString(c.getColumnIndexOrThrow(Steps.COL_STATUS)));
+                m.put(Steps.COL_STARTTIME,
+                        c.getString(c.getColumnIndexOrThrow(Steps.COL_STARTTIME)));
+                m.put(Plans.COL_CONTENT,
+                        c.getString(c.getColumnIndexOrThrow(Plans.COL_CONTENT)));
+                m.put(Plans.COL_MEMO,
+                        c.getString(c.getColumnIndexOrThrow(Plans.COL_MEMO)));
+                oList.add(m);
+            } while (c.moveToNext());
+        }
+        c.close();
+        return oList;
+    }
 
-        do{
-            Map<String,String> m = new HashMap<String,String>();
-            m.put(Steps.COL_STATUS,
-                    c.getString(c.getColumnIndexOrThrow(Steps.COL_STATUS)));
-            m.put(Steps.COL_STARTTIME,
-                    c.getString(c.getColumnIndexOrThrow(Steps.COL_STARTTIME)));
-            m.put(Plans.COL_CONTENT,
-                    c.getString(c.getColumnIndexOrThrow(Plans.COL_CONTENT)));
-            m.put(Plans.COL_MEMO,
-                    c.getString(c.getColumnIndexOrThrow(Plans.COL_MEMO)));
-            oList.add(m);
-        }while(c.moveToNext());
+    public List<Map<String,String>> getPlanDetail(int nPlanID){
+        List<Map<String,String>> oList = new ArrayList<>();
 
+        String[] cols = {
+            Plans._ID, Plans.COL_CONTENT, Plans.COL_MEMO, Plans.COL_STATUS, Plans.COL_TYPE
+        };
+        String selection = Plans._ID + " = ?";
+        String[] selectionArgs = {
+            String.format("%d", nPlanID)
+        };
+        SQLiteDatabase oDb = mDbHelper.getReadableDatabase();
+        Cursor c = oDb.query(Plans.TABLE_NAME, cols, selection, selectionArgs, null, null, null);
+        if(c.getCount()>0) {
+            do {
+                Map<String, String> m = new HashMap<String, String>();
+                m.put(Plans._ID,
+                        c.getString(c.getColumnIndexOrThrow(Plans._ID)));
+                m.put(Plans.COL_CONTENT,
+                        c.getString(c.getColumnIndexOrThrow(Plans.COL_CONTENT)));
+                m.put(Plans.COL_MEMO,
+                        c.getString(c.getColumnIndexOrThrow(Plans.COL_MEMO)));
+                m.put(Plans.COL_STATUS,
+                        c.getString(c.getColumnIndexOrThrow(Plans.COL_STATUS)));
+                m.put(Plans.COL_TYPE,
+                        c.getString(c.getColumnIndexOrThrow(Plans.COL_TYPE)));
+                oList.add(m);
+            } while (c.moveToNext());
+        }
+        c.close();
         return oList;
     }
 }

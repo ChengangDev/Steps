@@ -10,4 +10,70 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.free.cg.steps.PlanActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:weightSum="1">
+
+        <TextView
+            android:text="计划"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_content" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="计划名"
+            android:ems="10"
+            android:id="@+id/editText_content"
+            android:selectAllOnFocus="true"
+            android:singleLine="true" />
+
+        <TextView
+            android:text="详细内容"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_memo" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="计划详细"
+            android:ems="10"
+            android:id="@+id/editText_memo"
+            android:singleLine="false"
+            android:selectAllOnFocus="true"
+            android:layout_weight="0.14" />
+
+        <Switch
+            android:text="状态"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch_active"
+            android:checked="true" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:text="删除"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_delete"
+                android:elevation="0dp" />
+            <Button
+                android:text="保存"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_save"
+                android:elevation="0dp" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
