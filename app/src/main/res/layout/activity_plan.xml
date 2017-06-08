@@ -22,15 +22,14 @@
             android:text="计划"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView_content" />
+            android:id="@+id/textview_content" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:text="计划名"
             android:ems="10"
-            android:id="@+id/editText_content"
+            android:id="@+id/edittext_content"
             android:selectAllOnFocus="true"
             android:singleLine="true" />
 
@@ -38,42 +37,54 @@
             android:text="详细内容"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView_memo" />
+            android:id="@+id/textview_memo" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:text="计划详细"
             android:ems="10"
-            android:id="@+id/editText_memo"
+            android:id="@+id/edittext_memo"
             android:singleLine="false"
             android:selectAllOnFocus="true"
             android:layout_weight="0.14" />
 
         <Switch
-            android:text="状态"
+            android:id="@+id/switch_active"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/switch_active"
-            android:checked="true" />
+            android:checked="true"
+            android:onClick="onSwitchStatus"
+            android:text="状态" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <Button
-                android:text="删除"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/button_delete"
-                android:elevation="0dp" />
-            <Button
-                android:text="保存"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:onClick="onDeletePlan"
+                android:text="删除" />
+
+            <Button
                 android:id="@+id/button_save"
-                android:elevation="0dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:onClick="onSavePlan"
+                android:text="更新" />
+
+            <Button
+                android:id="@+id/button_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="0dp"
+                android:onClick="onAddPlan"
+                android:text="添加" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -35,7 +35,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     Steps.COL_PLANID + INT_TYPE + COMMA_SEP +
                     Steps.COL_STATUS + INT_TYPE + COMMA_SEP +
                     Steps.COL_STARTTIME + DATE_TYPE + COMMA_SEP +
-                    Steps.COL_DUETIME + DATE_TYPE +
+                    Steps.COL_SUCCESS + INT_TYPE +
                     ")";
 
     public DbHelper(Context context, String strDbPath){
