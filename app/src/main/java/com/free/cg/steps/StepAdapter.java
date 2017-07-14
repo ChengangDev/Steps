@@ -41,7 +41,7 @@ public class StepAdapter extends ArrayAdapter<StepItem> {
         TextView tvContent = (TextView)convertView.findViewById(R.id.textview_content);
         tvContent.setText(item.mPlanContent);
         TextView tvCount = (TextView)convertView.findViewById(R.id.textview_count);
-        tvCount.setText(String.format("%d/%d", item.mCompleted, item.mTotal));
+        tvCount.setText(String.format("%d/%d(%.0f%%)", item.mCompleted, item.mTotal, new Double(item.mCompleted)/item.mTotal*100));
         TextView tvSucc = (TextView)convertView.findViewById(R.id.textview_success);
         tvSucc.setText(String.format("连续%d", item.mSuccess));
         ToggleButton tg = (ToggleButton)convertView.findViewById(R.id.button_status);
